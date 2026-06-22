@@ -2,6 +2,8 @@
 
 This educational repository demonstrates how to build an instance segmentation video analytics pipeline with NVIDIA DeepStream, TensorRT, GStreamer, and a custom parser for YOLO11-Seg output.
 
+PyServiceMaker is NVIDIA's Python-first service abstraction pattern for composing reusable pipeline components. This repository mirrors that style with modular source, inference, tracker, OSD, and sink services.
+
 ## Pipeline Goal
 
 ```text
