@@ -1,0 +1,20 @@
+BaseConfig:
+  minDetectorConfidence: 0.2
+  enableBboxUnClipping: 1
+
+TargetManagement:
+  maxTargetsPerStream: 200
+  maxShadowTrackingAge: 30
+  minIouDiff4NewTarget: 0.4
+
+TrajectoryManagement:
+  useUniqueID: 1
+  enableReAssoc: 1
+
+DataAssociator:
+  dataAssociatorType: 0
+  associationMatcherType: 1
+  checkClassMatch: 1
+
+StateEstimator:
+  stateEstimatorType: 1

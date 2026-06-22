@@ -1,0 +1,21 @@
+service:
+  name: yolo11_seg_rtsp_service
+  log_level: INFO
+
+source:
+  uris:
+    - "******camera-ip/live"
+  reconnect_interval_sec: 5
+  latency_ms: 200
+
+inference:
+  config_file: configs/infer_yolo11_seg.txt
+
+tracker:
+  config_file: configs/tracker_config.yml
+
+sink:
+  rtsp_port: 8554
+  mount_path: /output
+  codec: h264
+  bitrate: 4000000
