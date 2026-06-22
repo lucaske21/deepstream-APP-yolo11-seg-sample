@@ -21,7 +21,7 @@ Encoder + RTSP Output
 Workflow in code:
 
 ```text
-pre_source(rtsp) → inf_segment → post_tracker → post_sink(rtsp)
+pre_source(rtsp) → inf_segment → post_tracker → post_osd → post_sink(rtsp)
 ```
 
 ## Repository Layout

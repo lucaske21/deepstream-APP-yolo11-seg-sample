@@ -10,6 +10,11 @@ if [[ ! -f "${ONNX_PATH}" ]]; then
   exit 1
 fi
 
-trtexec   --onnx="${ONNX_PATH}"   --saveEngine="${ENGINE_PATH}"   --fp16   --workspace=4096   --verbose
+trtexec \
+  --onnx="${ONNX_PATH}" \
+  --saveEngine="${ENGINE_PATH}" \
+  --fp16 \
+  --workspace=4096 \
+  --verbose
 
 echo "TensorRT engine generated at ${ENGINE_PATH}"
