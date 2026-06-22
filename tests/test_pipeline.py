@@ -1,6 +1,7 @@
 import unittest
 
 from app.main import build_service
+from app.pipeline.sink import SinkConfig, SinkService
 from app.probes.osd_probe import summarize_object_meta
 
 
@@ -18,6 +19,10 @@ class PipelineConfigTest(unittest.TestCase):
     def test_osd_probe_summary(self) -> None:
         text = summarize_object_meta({"label": "person", "confidence": 0.93, "has_mask": True})
         self.assertEqual("label=person confidence=0.93 mask=True", text)
+
+    def test_sink_selects_h265_payloader(self) -> None:
+        sink = SinkService(SinkConfig(rtsp_port=8554, mount_path="/output", codec="h265", bitrate=4_000_000))
+        self.assertEqual(["nvv4l2h265enc", "rtph265pay", "gst-rtsp-server"], sink.gst_elements())
 
 
 if __name__ == "__main__":

@@ -1,4 +1,4 @@
-# DeepStream 8 + PyServiceMaker YOLO11-Seg Learning Repository
+# DeepStream 8.x + PyServiceMaker YOLO11-Seg Learning Repository
 
 This educational repository demonstrates how to build an instance segmentation video analytics pipeline with NVIDIA DeepStream, TensorRT, GStreamer, and a custom parser for YOLO11-Seg output.
 

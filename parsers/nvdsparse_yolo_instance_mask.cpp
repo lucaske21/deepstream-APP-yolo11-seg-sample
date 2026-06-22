@@ -151,8 +151,11 @@ extern "C" bool NvDsInferParseCustomYolo11Seg(
       }
     }
 
-    const float threshold = detectionParams.perClassPreclusterThreshold[std::max(best_class, 0)];
-    if (best_class < 0 || best_score < threshold) {
+    if (best_class < 0) {
+      continue;
+    }
+    const float threshold = detectionParams.perClassPreclusterThreshold[best_class];
+    if (best_score < threshold) {
       continue;
     }
 
@@ -186,6 +189,7 @@ extern "C" bool NvDsInferParseCustomYolo11Seg(
     info.mask_width = proto_w;
     info.mask_height = proto_h;
     info.mask_size = static_cast<unsigned int>(mask.size());
+    // DeepStream frees `mask` when NvDsInferInstanceMaskInfo is released downstream.
     info.mask = static_cast<uint8_t*>(std::malloc(mask.size()));
 
     if (info.mask != nullptr) {

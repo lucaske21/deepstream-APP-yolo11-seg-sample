@@ -28,5 +28,7 @@ class SinkService:
         )
 
     def gst_elements(self) -> list[str]:
-        encoder = "nvv4l2h264enc" if self.cfg.codec.lower() == "h264" else "nvv4l2h265enc"
-        return [encoder, "rtph264pay", "gst-rtsp-server"]
+        codec = self.cfg.codec.lower()
+        encoder = "nvv4l2h264enc" if codec == "h264" else "nvv4l2h265enc"
+        payloader = "rtph264pay" if codec == "h264" else "rtph265pay"
+        return [encoder, payloader, "gst-rtsp-server"]
